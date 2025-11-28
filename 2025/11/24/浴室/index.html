@@ -329,6 +329,31 @@
     setTimeout(() => likeBtn.style.transform = 'scale(1)', 200);
   };
 </script>
+<!-- Valine 评论区 -->
+
+  <div class="post-comments" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+    <h3 style="margin-bottom: 20px; font-size: 18px;">
+      <i class="fa fa-comments-o"></i> 留言评论
+    </h3>
+    <!-- 引入 Valine CDN -->
+    <script src="https://unpkg.com/valine@1.4.18/dist/Valine.min.js"></script>
+    <!-- 评论区容器 -->
+    <div id="valine-container"></div>
+    <!-- 初始化 Valine -->
+    <script>
+      new Valine({
+        el: '#valine-container',
+        appId: 'OJStsmunVdLERqFJJdtYga9i-MdYXbMMI'
+        appKey: 'gL6YEjAXBQNLWrlhU9gf6y2r'
+        placeholder: '来说点什么吧~', // 输入框提示语
+        like: true, // 开启点赞功能
+        notify: false, // 关闭邮件通知（可选）
+        avatar: 'mp', // 头像样式
+        pageSize: 10, // 每页评论数
+      });
+    </script>
+  </div>
+
   </article>
 </div>
 
