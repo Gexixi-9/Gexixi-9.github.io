@@ -287,9 +287,9 @@
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E5%8C%97%E7%87%83/" rel="tag"># 北燃</a>
               <a href="/tags/BDSM/" rel="tag"># BDSM</a>
               <a href="/tags/Rape-Non-Con/" rel="tag"># Rape/Non-Con</a>
-              <a href="/tags/%E5%8C%97%E7%87%83/" rel="tag"># 北燃</a>
               <a href="/tags/spanking/" rel="tag"># spanking</a>
               <a href="/tags/angrysex/" rel="tag"># angrysex</a>
           </div>
@@ -306,47 +306,30 @@
             </div>
           </div>
     </footer>
-  </article>
-<!-- 沙箱隔离版评论区（点击100%生效） -->
-<div style="margin: 30px 0; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
-  <h3 style="margin: 0 0 15px 0; color: #333; font-size: 16px;">💬 留言评论</h3>
-  <!-- 用iframe隔离主题影响，点击不被拦截 -->
-  <iframe 
-    srcdoc="
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset='UTF-8'>
-        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/artalk@2.7.5/dist/Artalk.css'>
-        <style>
-          body { margin: 0; padding: 0; }
-          #artalk-comments { width: 100% !important; }
-          .artalk-form-input, .artalk-textarea { border: 1px solid #ddd !important; padding: 8px !important; }
-          .artalk-btn { background: #42b983 !important; color: white !important; border: none !important; padding: 8px 16px !important; cursor: pointer !important; }
-        </style>
-      </head>
-      <body>
-        <div id='artalk-comments'></div>
-        <script src='https://cdn.jsdelivr.net/npm/artalk@2.7.5/dist/Artalk.umd.js'></script>
-        <script>
-          Artalk.init({
-            el: '#artalk-comments',
-            server: 'https://artalk-server.vercel.app',
-            site: '我的Hexo博客',
-            pageKey: '2025/11/24/浴室/', // 自动匹配当前文章
-            pageTitle: '浴室', // 自动获取文章标题
-            placeholder: '点击输入评论～',
-            avatar: { type: 'ui-avatars', uiAvatars: { background: '#42b983', color: '#fff' } },
-            form: { fields: ['nick', 'content'], required: ['nick', 'content'] }
-          });
-        </script>
-      </body>
-      </html>
-    "
-    style="width: 100%; height: 400px; border: none; overflow: hidden;"
-    title="评论区"
-  ></iframe>
+<!-- 手动添加点赞按钮 -->
+<div class="post-like" style="margin: 20px 0; text-align: center;">
+  <button id="likeBtn" style="border: none; background: #ff4d4f; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;">
+    <i class="fa fa-heart"></i> <span id="likeCount">0</span>
+  </button>
 </div>
+<script>
+  // 本地存储点赞数（刷新不丢失）
+  const likeBtn = document.getElementById('likeBtn');
+  const likeCount = document.getElementById('likeCount');
+  const postId = '2025/11/24/浴室/'; // 用文章路径作为唯一ID
+  const storedCount = localStorage.getItem(`like_${postId}`) || 0;
+  likeCount.textContent = storedCount;
+
+  likeBtn.onclick = () => {
+    let count = parseInt(likeCount.textContent);
+    count++;
+    likeCount.textContent = count;
+    localStorage.setItem(`like_${postId}`, count);
+    likeBtn.style.transform = 'scale(1.1)';
+    setTimeout(() => likeBtn.style.transform = 'scale(1)', 200);
+  };
+</script>
+  </article>
 </div>
 
 
